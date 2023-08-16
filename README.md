@@ -6,7 +6,7 @@
 
 ### Getting Started
 ```bash
-$ git clone https://gitlab.crowdaronline.com/lippia/products/test-manager/adapters/cucumber4-adapter.git && cd "$(basename "$_" .git)"
+$ git clone https://gitlab.crowdaronline.com/lippia/products/test-manager/adapters/cucumber7-adapter.git && cd "$(basename "$_" .git)"
 $ mvn clean install -DskipTests
 ```
 
