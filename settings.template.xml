@@ -1,0 +1,47 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- generation text -->
+
+    <!-- Complete Documentation for the settings.xml file can be found at https://maven.apache.org/settings.html -->
+
+    <!--
+     - <servers> specify the repositories we deploy or release artifacts to.
+     -
+     - The <id> tag specified here should match up with an <id> tag for a <repository> or <snapshotRepository>
+     - located in the <distributionManagement> section of your project's pom.xml
+     -->
+
+    <servers>
+        <server>
+            <id>crowdarNexus-releases</id>
+            <username>${env.NEXUS_USERNAME}</username>
+            <password>${env.NEXUS_PASSPHRASE}</password>
+        </server>
+
+        <server>
+            <id>crowdarNexus-snapshots</id>
+            <username>${env.NEXUS_USERNAME}</username>
+            <password>${env.NEXUS_PASSPHRASE}</password>
+        </server>
+
+        <server>
+            <id>ossrh</id>
+            <username>${env.OSSRH_USERNAME}</username>
+            <password>${env.OSSRH_PASSPHRASE}</password>
+        </server>
+    </servers>
+
+    <profiles>
+        <profile>
+            <id>ossrh</id>
+            <properties>
+                <gpg.keyname>${env.GPG_KEY}</gpg.keyname>
+                <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+            </properties>
+        </profile>
+    </profiles>
+
+</settings>
