@@ -1,0 +1,25 @@
+image: crowdar/pipeline:2.0.1
+
+stages:
+  - Deploy
+
+deploy Nexus:
+  stage: Deploy
+  script:
+    - sh create-settings.sh
+    - mvn -B -s settings.xml verify
+    - mvn -B -s settings.xml deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "release"'
+    - if: '$CI_COMMIT_BRANCH == "master"'
+
+Deploy OSSRH:
+  stage: Deploy
+  script:
+    - sh create-settings.sh
+    - gpg --batch --import ${GPG_KEY_FILE}
+    - mvn versions:set -DremoveSnapshot
+    - mvn -P ossrh -B -s settings.xml verify
+    - mvn -P ossrh -B -s settings.xml deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
