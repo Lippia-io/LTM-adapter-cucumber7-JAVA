@@ -33,6 +33,8 @@ $ mvn clean install -DskipTests
                 <suiteXmlFile>${testng-runner}</suiteXmlFile>
             </suiteXmlFiles>
             <systemPropertyVariables>
+                <TEST_MANAGER_USERNAME></TEST_MANAGER_USERNAME>
+                <TEST_MANAGER_PASSWORD></TEST_MANAGER_PASSWORD>
                 <TEST_MANAGER_API_HOST>https://runs.dev.lippia.io</TEST_MANAGER_API_HOST>
                 <TEST_MANAGER_API_PORT></TEST_MANAGER_API_PORT>
                 <TEST_MANAGER_RUN_NAME>Local - build</TEST_MANAGER_RUN_NAME>
