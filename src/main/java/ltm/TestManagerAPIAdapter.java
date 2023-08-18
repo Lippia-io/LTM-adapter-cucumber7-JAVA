@@ -5,10 +5,13 @@ import io.cucumber.messages.types.Envelope;
 import io.cucumber.messages.types.Feature;
 import io.cucumber.messages.types.GherkinDocument;
 import io.cucumber.plugin.ConcurrentEventListener;
+import io.cucumber.plugin.event.DataTableArgument;
+import io.cucumber.plugin.event.DocStringArgument;
 import io.cucumber.plugin.event.EventPublisher;
 import io.cucumber.plugin.event.PickleStepTestStep;
 import io.cucumber.plugin.event.Status;
 import io.cucumber.plugin.event.Step;
+import io.cucumber.plugin.event.StepArgument;
 import io.cucumber.plugin.event.TestCaseEvent;
 import io.cucumber.plugin.event.TestCaseFinished;
 import io.cucumber.plugin.event.TestCaseStarted;
@@ -36,7 +39,6 @@ public abstract class TestManagerAPIAdapter implements ConcurrentEventListener {
     private final Map<URI, GherkinDocument> testSources = new ConcurrentHashMap<>();
     private final ThreadLocal<URI> currentFeatureFile = new ThreadLocal<>();
     private static final ThreadLocal<List<StepDTO>> steps = new ThreadLocal<>();
-
     private static final RunDTO runResponseDTO;
     private static final SSConfig screenshotConfig;
 
@@ -133,9 +135,23 @@ public abstract class TestManagerAPIAdapter implements ConcurrentEventListener {
         PickleStepTestStep pickle = ((PickleStepTestStep) event.getTestStep());
         Step step = pickle.getStep();
 
-        return step.getKeyword().concat(step.getText());
-    }
+        String text = step.getText();
+        StepArgument argument = step.getArgument();
 
+        if (argument instanceof DataTableArgument) {
+            StringBuilder dtString = new DataTableFormatter
+                    ((DataTableArgument) argument).generateTabularFormat();
+
+            // TODO Auto-generated
+        } else if (argument instanceof DocStringArgument) {
+            String content = ((DocStringArgument) argument).getContent();
+            String mediaType = ((DocStringArgument) argument).getMediaType();
+
+            // TODO Auto-generated
+        }
+
+        return step.getKeyword().concat(text);
+    }
 
     private synchronized void handleTestCaseFinished(TestCaseFinished event) {
         this.handleEndOfFeature(event);
