@@ -5,9 +5,12 @@ import io.cucumber.plugin.event.DataTableArgument;
 import java.util.List;
 
 public class DataTableFormatter {
-    private final List<?> list;
+    private List<?> list;
 
-    public DataTableFormatter(DataTableArgument dtArgument) {
+    public DataTableFormatter() {
+    }
+
+    public DataTableFormatter(final DataTableArgument dtArgument) {
         this.list = dtArgument.cells();
     }
 
@@ -50,7 +53,7 @@ public class DataTableFormatter {
             for (Object row : data) {
                 List<?> rowData = (List<?>) row;
                 for (int colIndex = 0; colIndex < numCols; colIndex++) {
-                    int cellLength = getCellLength(rowData.get(colIndex));
+                    int cellLength = rowData.get(colIndex).toString().length();
                     if (cellLength > columnWidths[colIndex]) {
                         columnWidths[colIndex] = cellLength;
                     }
@@ -66,10 +69,6 @@ public class DataTableFormatter {
                 appendTableRow(result, value.toString(), depth);
             }
         }
-    }
-
-    private int getCellLength(Object cell) {
-        return cell.toString().length();
     }
 
     private void appendTableRow(StringBuilder result, String cell, int depth) {

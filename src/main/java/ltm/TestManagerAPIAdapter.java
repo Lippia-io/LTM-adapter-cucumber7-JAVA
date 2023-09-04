@@ -88,8 +88,6 @@ public abstract class TestManagerAPIAdapter implements ConcurrentEventListener {
         return status.toString().toUpperCase().substring(0, status.toString().length() - 2);
     }
 
-
-
     private synchronized void handleTestCaseStarted(TestCaseStarted event) {
         this.handleStartOfFeature(event);
     }
@@ -142,12 +140,12 @@ public abstract class TestManagerAPIAdapter implements ConcurrentEventListener {
             StringBuilder dtString = new DataTableFormatter
                     ((DataTableArgument) argument).generateTabularFormat();
 
-            // TODO Auto-generated
+            text = dtString.insert(0, text + "\n").toString();
         } else if (argument instanceof DocStringArgument) {
-            String content = ((DocStringArgument) argument).getContent();
-            String mediaType = ((DocStringArgument) argument).getMediaType();
+            StringBuilder dsString = new StringBuilder(
+                    ((DocStringArgument) argument).getContent());
 
-            // TODO Auto-generated
+            text = dsString.insert(0, text + "\n\n").toString();
         }
 
         return step.getKeyword().concat(text);
