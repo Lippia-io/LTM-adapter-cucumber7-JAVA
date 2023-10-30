@@ -1,5 +1,5 @@
 include:
   - project: 'lippia/products/template-ci'
     ref: master
-    file: 
+    file:
       - 'Publish.yml'
