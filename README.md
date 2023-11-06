@@ -1,4 +1,4 @@
-# [JVM] Lippia Test Manager Cucumber4 Adapter
+# [JVM] Lippia Test Manager Cucumber7 Adapter
 [![Crowdar Official Page](https://img.shields.io/badge/crowdar-official%20page-brightgreen)](https://crowdar.com.ar/)
 [![Lippia Official Page](https://img.shields.io/badge/lippia-official%20page-brightgreen)](https://www.lippia.io/)
 
