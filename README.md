@@ -2,8 +2,9 @@
 [![Crowdar Official Page](https://img.shields.io/badge/crowdar-official%20page-brightgreen)](https://crowdar.com.ar/)
 [![Lippia Official Page](https://img.shields.io/badge/lippia-official%20page-brightgreen)](https://www.lippia.io/)
 
-The Lippia Test Manager adapter allows to ingest cucumber test results into a Lippia Test Manager instance.
-To have access to a Lippia Test Manager go to [Lippia.io](https://lippia.io/) website.
+ The Lippia Test Manager adapter allows to ingest cucumber test results into a Lippia Test Manager instance. 
+ To have access to a Lippia Test Manager go to [Lippia.io](https://lippia.io/) website.
+ To use it you need to to have a test automation code project and use Cucumber 7. 
 
 ## Getting Started
 
@@ -14,7 +15,7 @@ To have access to a Lippia Test Manager go to [Lippia.io](https://lippia.io/) we
     <dependency>
         <groupId>io.lippia.report</groupId>
         <artifactId>ltm-cucumber7-adapter</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </dependency>
     ...
 </dependencies>
@@ -23,12 +24,12 @@ To have access to a Lippia Test Manager go to [Lippia.io](https://lippia.io/) we
 ### Report Class
 You need to create the class that implements the **TestManagerAPIAdapter** interface to capture screenshot using a variable *driver*  depending on the type of application you are testing with the automation project
 
-### Web Applications
+### Web Applications 
 ```java
  import org.openqa.selenium.remote.RemoteWebDriver
 ```
 
-### Mobile Applications
+### Mobile Applications 
 ```java
 import io.appium.java_client.AppiumDriver 
 ```
@@ -58,7 +59,7 @@ public class TestManagerReporter extends TestManagerAPIAdapter {
 </properties>
 ```
 
-### Configure the following properties
+### Configure the following properties 
 ```xml
 <plugins>
     ...
