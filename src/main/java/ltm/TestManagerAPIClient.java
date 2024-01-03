@@ -103,13 +103,13 @@ final class TestManagerAPIClient {
         ltm.models.run.request.RunDTO run = new ltm.models.run.request.RunDTO(
                 TEST_MANAGER_RUN_NAME, TEST_MANAGER_PROJECT_CODE);
 
-        String url = getAPIUrl() + "/run-result-import/runs";
+        String url = getAPIUrl() + "/runs";
         HttpEntity<ltm.models.run.request.RunDTO> request = new HttpEntity<>(run, getApiHeaders());
         return getRestInstance().postForObject(url, request, RunDTO.class);
     }
 
     public static void createTest(TestDTO test) {
-        String url = getAPIUrl() + "/run-result-import/tests";
+        String url = getAPIUrl() + "/tests";
         HttpEntity<TestDTO> request = new HttpEntity<>(test, getApiHeaders());
         getRestInstance().postForObject(url, request, Object.class);
     }
