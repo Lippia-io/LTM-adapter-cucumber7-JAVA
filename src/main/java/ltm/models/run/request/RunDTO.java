@@ -4,9 +4,11 @@ public final class RunDTO {
     public RunDTO() {
     }
 
-    public RunDTO(String runName, String projectCode) {
+    public RunDTO(String runName, String projectCode, String repositoryUrl, String branchName) {
         this.runName = runName;
         this.projectCode = projectCode;
+        this.repositoryUrl = repositoryUrl;
+        this.branchName = branchName;
     }
 
     public void setRunName(String runName) {
@@ -25,6 +27,24 @@ public final class RunDTO {
         return projectCode;
     }
 
+    public String getRepositoryUrl() {
+        return repositoryUrl;
+    }
+
+    public void setRepositoryUrl(String repositoryUrl) {
+        this.repositoryUrl = repositoryUrl;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
     private String runName;
     private String projectCode;
+    private String repositoryUrl;
+    private String branchName;
 }
