@@ -2,9 +2,9 @@
 [![Crowdar Official Page](https://img.shields.io/badge/crowdar-official%20page-brightgreen)](https://crowdar.com.ar/)
 [![Lippia Official Page](https://img.shields.io/badge/lippia-official%20page-brightgreen)](https://www.lippia.io/)
 
- The Lippia Test Manager adapter allows to ingest cucumber test results into a Lippia Test Manager instance. 
- To have access to a Lippia Test Manager go to [Lippia.io](https://lippia.io/) website.
- To use it you need to to have a test automation code project and use Cucumber 7. 
+ The Lippia Test Manager adapter allows to ingest cucumber test results into a Lippia Test Manager instance.  
+ To have access to a Lippia Test Manager go to [Lippia.io](https://lippia.io/) website.  
+ To use it you need to have a test automation code project and use Cucumber 7. 
 
 ## Getting Started
 
@@ -15,7 +15,7 @@
     <dependency>
         <groupId>io.lippia.report</groupId>
         <artifactId>ltm-cucumber7-adapter</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.2-SNAPSHOT</version>
     </dependency>
     ...
 </dependencies>
@@ -76,6 +76,8 @@ public class TestManagerReporter extends TestManagerAPIAdapter {
                 <TEST_MANAGER_API_PORT></TEST_MANAGER_API_PORT>
                 <TEST_MANAGER_RUN_NAME></TEST_MANAGER_RUN_NAME>
                 <TEST_MANAGER_PROJECT_CODE></TEST_MANAGER_PROJECT_CODE>
+                <TEST_MANAGER_REPOSITORY_URL></TEST_MANAGER_REPOSITORY_URL>
+                <TEST_MANAGER_REPOSITORY_BRANCH></TEST_MANAGER_REPOSITORY_BRANCH>
             </systemPropertyVariables>
             ...
         </configuration>
@@ -85,14 +87,16 @@ public class TestManagerReporter extends TestManagerAPIAdapter {
 ```
 If you need to know in detail the purpose of each of the properties mentioned above, please continue to the next point, otherwise, ignore it.
 
-| Key                        | Concept                                                                 | Is         |
-|----------------------------|-------------------------------------------------------------------------|------------|
-| TEST_MANAGER_USERNAME      | User with which the Test Manager instance will be authenticated         | Mandatory  |
-| TEST_MANAGER_PASSWORD      | Password with which the Test Manager instance will be authenticated     | Mandatory  |
-| TEST_MANAGER_API_HOST      | Host to which the adapter will attempt to authenticate                  | Mandatory  |
-| TEST_MANAGER_API_PORT      | Port on which the Test Manager instance will be listening               | Optional   |
-| TEST_MANAGER_RUN_NAME      | Run name, serves as identifier of the suite execution                   | Mandatory  |
-| TEST_MANAGER_PROJECT_CODE  | Project Code into which the adapter will attempt to inject test results | Mandatory  |
+| Key                            | Concept                                                                 | Is         |
+|--------------------------------|-------------------------------------------------------------------------|------------|
+| TEST_MANAGER_USERNAME          | User with which the Test Manager instance will be authenticated         | Mandatory  |
+| TEST_MANAGER_PASSWORD          | Password with which the Test Manager instance will be authenticated     | Mandatory  |
+| TEST_MANAGER_API_HOST          | Host to which the adapter will attempt to authenticate                  | Mandatory  |
+| TEST_MANAGER_API_PORT          | Port on which the Test Manager instance will be listening               | Optional   |
+| TEST_MANAGER_RUN_NAME          | Run name, serves as identifier of the suite execution                   | Mandatory  |
+| TEST_MANAGER_PROJECT_CODE      | Project Code into which the adapter will attempt to inject test results | Mandatory  |
+| TEST_MANAGER_REPOSITORY_URL    | URL of the repository linked to the project                             | Mandatory  |
+| TEST_MANAGER_REPOSITORY_BRANCH | Branch from where the automated tests are being injected                | Mandatory  |
 
 ### Configure screenshot strategies
 By default, it won't take screenshots; If you need to configure your injection, please refer to the following reference & table
