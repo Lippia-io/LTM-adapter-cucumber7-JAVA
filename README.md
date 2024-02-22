@@ -7,6 +7,7 @@
  To use it you need to have a test automation code project and use Cucumber 7. 
 
 ## Getting Started
+_Please note that this adapter **supports** cucumber >= v7.9.0_
 
 ### Import dependency
 ```xml
