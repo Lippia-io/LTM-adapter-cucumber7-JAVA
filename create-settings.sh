@@ -8,8 +8,12 @@ DEST_FILE_NAME=settings.xml
 DESTINATION_FILE=$DIR/$DEST_FILE_NAME
 GITIGNORE=$DIR/.gitignore
 
+# Install necessary packages
+apt-get update
+apt-get install -y gnupg maven
+
 echo "Checking for presence of NEXUS_USERNAME environment variable...."
-if [[ $NEXUS_USERNAME ]];
+if [ $NEXUS_USERNAME ];
 then
   echo "Success - Found Nexus Username in environment variables...";
 else
@@ -18,7 +22,7 @@ else
 fi;
 
 echo "Checking for presence of NEXUS_PASSPHRASE environment variable...."
-if [[ $NEXUS_PASSPHRASE ]];
+if [ $NEXUS_PASSPHRASE ];
 then
   echo "Success - Found Nexus Passphrase in environment variables...";
 else
